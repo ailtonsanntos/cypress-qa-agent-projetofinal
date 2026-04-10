@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-04-10T00:22:06.272Z",
+    "end": "2026-04-10T00:22:27.084Z",
+    "duration": 20812,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9144aec0-a2ee-4082-b694-ec9f140c9c94",
+      "title": "",
+      "fullFile": "cypress\\e2e\\cadastro-de-usuario.cy.js",
+      "file": "cypress\\e2e\\cadastro-de-usuario.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5d97f8b7-1b8b-4c2d-bbcb-92050a24cf3c",
+          "title": "BugBank E2E Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "1 - Criar uma conta com saldo",
+              "fullTitle": "BugBank E2E Tests 1 - Criar uma conta com saldo",
+              "timedOut": null,
+              "duration": 4341,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Navega para a tela de cadastro\ncy.contains('Registrar', {\n  timeout: 20000\n}).click();\ncy.wait(1000);\n// Ativa a opção de criar conta com saldo\ncy.get('#toggleAddBalance', {\n  timeout: 20000\n}).click({\n  force: true\n});\n// Preenche o formulário\ncy.get('.card__register input[name=\"name\"]', {\n  timeout: 20000\n}).should('exist').type('Ton Santos', {\n  force: true\n});\ncy.get('.card__register input[name=\"email\"]', {\n  timeout: 20000\n}).should('exist').type('ailtonsanntos@gmail.com', {\n  force: true\n});\ncy.get('.card__register input[name=\"password\"]', {\n  timeout: 20000\n}).should('exist').type('@Admin123', {\n  force: true\n});\ncy.get('.card__register input[name=\"passwordConfirmation\"]', {\n  timeout: 20000\n}).should('exist').type('@Admin123', {\n  force: true\n});\n// Submete\ncy.contains('Cadastrar', {\n  timeout: 20000\n}).click({\n  force: true\n});\n// Verifica mensagem de sucesso\ncy.contains('foi criada com sucesso', {\n  timeout: 20000\n}).should('be.visible');\ncy.screenshot('conta-criada-sucesso');",
+              "err": {},
+              "uuid": "4eacda8e-dbd0-4b40-b35c-2c573264dde0",
+              "parentUUID": "5d97f8b7-1b8b-4c2d-bbcb-92050a24cf3c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "2 - Campos obrigatórios no cadastro",
+              "fullTitle": "BugBank E2E Tests 2 - Campos obrigatórios no cadastro",
+              "timedOut": null,
+              "duration": 1887,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains('Registrar', {\n  timeout: 20000\n}).click();\ncy.wait(1000);\n// Tenta submeter sem preencher nada\ncy.contains('Cadastrar', {\n  timeout: 20000\n}).click({\n  force: true\n});\n// Verifica mensagens de erro para cada campo obrigatório\ncy.get('.card__register input[name=\"name\"]').then($el => {\n  expect($el[0].validationMessage).to.exist;\n});\ncy.get('.card__register input[name=\"email\"]').then($el => {\n  expect($el[0].validationMessage).to.exist;\n});\ncy.get('.card__register input[name=\"password\"]').then($el => {\n  expect($el[0].validationMessage).to.exist;\n});\ncy.screenshot('campos-obrigatorios-erro');",
+              "err": {},
+              "uuid": "02bddcd2-4fb9-4344-9292-0420e9cc62e8",
+              "parentUUID": "5d97f8b7-1b8b-4c2d-bbcb-92050a24cf3c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "3 - Login com sucesso",
+              "fullTitle": "BugBank E2E Tests 3 - Login com sucesso",
+              "timedOut": null,
+              "duration": 6423,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Pré-requisito: Criar a conta (localStorage está vazio a cada novo teste)\ncy.contains('Registrar', {\n  timeout: 20000\n}).click();\ncy.wait(1000);\ncy.get('#toggleAddBalance', {\n  timeout: 20000\n}).click({\n  force: true\n});\ncy.get('.card__register input[name=\"name\"]', {\n  timeout: 20000\n}).should('exist').type('Ton Santos', {\n  force: true\n});\ncy.get('.card__register input[name=\"email\"]', {\n  timeout: 20000\n}).should('exist').type('ailtonsanntos@gmail.com', {\n  force: true\n});\ncy.get('.card__register input[name=\"password\"]', {\n  timeout: 20000\n}).should('exist').type('@Admin123', {\n  force: true\n});\ncy.get('.card__register input[name=\"passwordConfirmation\"]', {\n  timeout: 20000\n}).should('exist').type('@Admin123', {\n  force: true\n});\ncy.contains('Cadastrar', {\n  timeout: 20000\n}).click({\n  force: true\n});\ncy.contains('foi criada com sucesso', {\n  timeout: 20000\n}).should('be.visible');\ncy.wait(1500);\n// Agora fazer o login com sucesso\ncy.contains('Registrar', {\n  timeout: 20000\n}).click({\n  force: true\n});\ncy.wait(1000);\ncy.get('.card__login input[name=\"email\"]', {\n  timeout: 20000\n}).type('ailtonsanntos@gmail.com', {\n  force: true\n});\ncy.get('.card__login input[name=\"password\"]', {\n  timeout: 20000\n}).type('@Admin123', {\n  force: true\n});\ncy.contains('Acessar', {\n  timeout: 20000\n}).click({\n  force: true\n});\n// Verifica se o usuário foi redirecionado ao home\ncy.url({\n  timeout: 20000\n}).should('include', '/home');\ncy.screenshot('login-sucesso');",
+              "err": {},
+              "uuid": "e373a11a-7905-4872-aa46-f0fc4e529cbf",
+              "parentUUID": "5d97f8b7-1b8b-4c2d-bbcb-92050a24cf3c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "4 - Login inválido",
+              "fullTitle": "BugBank E2E Tests 4 - Login inválido",
+              "timedOut": null,
+              "duration": 6236,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Pré-requisito: Criar a conta (localStorage está vazio a cada novo teste)\ncy.contains('Registrar', {\n  timeout: 20000\n}).click();\ncy.wait(1000);\ncy.get('#toggleAddBalance', {\n  timeout: 20000\n}).click({\n  force: true\n});\ncy.get('.card__register input[name=\"name\"]', {\n  timeout: 20000\n}).should('exist').type('Ton Santos', {\n  force: true\n});\ncy.get('.card__register input[name=\"email\"]', {\n  timeout: 20000\n}).should('exist').type('ailtonsanntos@gmail.com', {\n  force: true\n});\ncy.get('.card__register input[name=\"password\"]', {\n  timeout: 20000\n}).should('exist').type('@Admin123', {\n  force: true\n});\ncy.get('.card__register input[name=\"passwordConfirmation\"]', {\n  timeout: 20000\n}).should('exist').type('@Admin123', {\n  force: true\n});\ncy.contains('Cadastrar', {\n  timeout: 20000\n}).click({\n  force: true\n});\ncy.contains('foi criada com sucesso', {\n  timeout: 20000\n}).should('be.visible');\ncy.wait(1500);\n// Agora testar login com credenciais inválidas\ncy.contains('Registrar', {\n  timeout: 20000\n}).click({\n  force: true\n});\ncy.wait(1000);\ncy.get('.card__login input[name=\"email\"]', {\n  timeout: 20000\n}).type('email.invalido@exemplo.com', {\n  force: true\n});\ncy.get('.card__login input[name=\"password\"]', {\n  timeout: 20000\n}).type('senhaErrada', {\n  force: true\n});\ncy.contains('Acessar', {\n  timeout: 20000\n}).click({\n  force: true\n});\n// Verifica mensagem de erro\ncy.contains('Usuário ou senha', {\n  timeout: 20000\n}).should('be.visible');\ncy.screenshot('login-invalido');",
+              "err": {},
+              "uuid": "a7d28ecf-7e8d-4c7a-8c12-5ce59178e148",
+              "parentUUID": "5d97f8b7-1b8b-4c2d-bbcb-92050a24cf3c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4eacda8e-dbd0-4b40-b35c-2c573264dde0",
+            "02bddcd2-4fb9-4344-9292-0420e9cc62e8",
+            "e373a11a-7905-4872-aa46-f0fc4e529cbf",
+            "a7d28ecf-7e8d-4c7a-8c12-5ce59178e148"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 18887,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

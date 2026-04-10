@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-04-10T00:22:29.819Z",
+    "end": "2026-04-10T00:22:30.866Z",
+    "duration": 1047,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "28e84d62-bd03-4952-bc82-a04439221b1f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\validar-pet.cy.js",
+      "file": "cypress\\e2e\\validar-pet.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b9d25932-2bcc-4db8-8b2a-0149f47db82b",
+          "title": "Pet API Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validar se o pet v2/pet/1 tem name \"doggie\"",
+              "fullTitle": "Pet API Tests Validar se o pet v2/pet/1 tem name \"doggie\"",
+              "timedOut": null,
+              "duration": 1019,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: 'https://petstore.swagger.io/v2/pet/2',\n  failOnStatusCode: false\n}).then(response => {\n  // Log da resposta\n  cy.log(`Status code: ${response.status}`);\n  cy.log(`Pet name: ${response.body.name}`);\n  // Validação do status HTTP\n  expect(response.status).to.eq(200);\n  // Validação da estrutura JSON\n  expect(response.body).to.be.an('object');\n  expect(response.body).to.have.property('id', 2);\n  expect(response.body).to.have.property('name', 'Tom');\n  expect(response.body).to.have.property('category');\n  expect(response.body).to.have.property('photoUrls');\n  expect(response.body).to.have.property('tags');\n  expect(response.body).to.have.property('status');\n  // Screenshot da resposta\n  cy.screenshot('pet-1-response');\n});",
+              "err": {},
+              "uuid": "abb00b73-5b79-43e2-ae20-acf8c52dbd8a",
+              "parentUUID": "b9d25932-2bcc-4db8-8b2a-0149f47db82b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "abb00b73-5b79-43e2-ae20-acf8c52dbd8a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1019,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
